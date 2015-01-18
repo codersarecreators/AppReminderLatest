@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.reminderappnewui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="com.example.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permisson.SEND_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+       >
+        <service android:name="com.codersarecreators.AlarmService" android:enabled="true"/>
+       <receiver android:name="com.codersarecreators.myreminder.AlarmReceiver">
+      <intent-filter>
+         <action android:name="com.codersarecreators.CUSTOM_INTENT">
+      </action>
+      </intent-filter>
+   </receiver>
+             <activity
+            android:name="com.codersarecreators.myreminder.MainActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.codersarecreators.myreminder.Reminder"
+            android:label="@string/app_name" 
+             android:screenOrientation="portrait"
+             android:windowSoftInputMode="stateUnchanged"
+            >
+            
+        </activity>
+         <activity
+            android:name="com.codersarecreators.myreminder.ReminderNotificationActivity"
+            android:label="Alarm"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.codersarecreators.myreminder.ReminderNotificationActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
